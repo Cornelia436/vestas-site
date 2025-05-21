@@ -4,7 +4,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# Configurații generale ale paginii
+# ─────────────────────────────────────────────
+# Realizat de echipa eEconomic - Colegiul Economic „Regele Mihai I” Buzău
+# Autenticitate validată • 2025
+# ─────────────────────────────────────────────
+
 st.set_page_config(layout="centered", page_title="Analiză VESTAS", page_icon="📈")
 
 st.title("🌬️ Analiză Investiție: VESTAS WIND SYSTEMS A/S")
@@ -42,7 +46,6 @@ with st.expander("🧩 Argumente strategice pentru investiție"):
 - 🌍 Aliniere perfectă la politicile climatice europene  
 """)
 
-# Informații suplimentare în extensii
 with st.expander("📌 Despre Vestas"):
     st.markdown("""
 **Vestas Wind Systems A/S** este liderul global în soluții de energie eoliană, cu sediul în Aarhus, Danemarca.  
@@ -110,13 +113,13 @@ with st.expander("📬 Contact"):
 """)
 
 # Imagine suplimentară profil companie
-imagine2 = "Imagine2.png"  # Schimbat cu fișierul tău
+imagine2 = "Imagine2.png"
 if os.path.exists(imagine2):
     st.image(imagine2, caption="📌 Profil companie Vestas Wind Systems A/S", use_container_width=True)
 else:
     st.warning(f"⚠️ Imagine lipsă: {imagine2}")
 
-# Date fundamentale (poți păstra sau șterge dacă sunt redundante)
+# Date fundamentale
 with st.expander("📊 Date fundamentale companie"):
     st.markdown("""
 - 🏢 **Sediu:** Aarhus, Danemarca  
@@ -129,7 +132,7 @@ with st.expander("📊 Date fundamentale companie"):
 - 📦 **Sector:** Industrial Goods  
 """)
 
-# Evoluție acțiune (10 zile)
+# Evoluție acțiune
 st.divider()
 st.header("📈 Evoluție recentă a acțiunii VESTAS")
 
@@ -150,6 +153,19 @@ if not data.empty:
     st.pyplot(fig)
 else:
     st.info("📭 Datele nu sunt disponibile momentan.")
+
+# Footer autenticitate + sigla
+st.divider()
+col_logo, col_text = st.columns([1, 3])
+with col_logo:
+    if os.path.exists("sigla_liceu.png"):
+        st.image("sigla_liceu.png", width=120)
+with col_text:
+    st.markdown("""
+**Proiect realizat de echipa _eEconomic_**  
+Colegiul Economic „Regele Mihai I” Buzău  
+🛡️ _Autenticitate verificată | Mai 2025_
+""")
 
 # Avertisment
 st.warning("⚠️ Investițiile pe piața bursieră implică riscuri. Informați-vă corect!")
