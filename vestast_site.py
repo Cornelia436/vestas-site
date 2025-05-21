@@ -3,11 +3,6 @@ import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
-import time
-
-# 🔄 Refresh automat la 5 secunde
-time.sleep(5)
-st.rerun()
 
 # Configurații generale ale paginii
 st.set_page_config(layout="centered", page_title="Analiză VESTAS", page_icon="📈")
@@ -27,7 +22,7 @@ col1.metric("💰 Preț curent (DKK)", pret)
 col2.metric("📌 Recomandare investitori", str(recomandare).upper())
 
 # Afișare imagine performanță acțiuni
-imagine1 = "images/Captura1.png"
+imagine1 = "Captura1.png"
 if os.path.exists(imagine1):
     st.image(imagine1, caption="📊 Performanță acțiuni VESTAS", use_container_width=True)
 else:
@@ -48,7 +43,7 @@ with st.expander("🧩 Argumente strategice pentru investiție"):
 """)
 
 # Afișare imagine profil companie
-imagine2 = "images/Captura2.png"
+imagine2 = "Captura2.png"
 if os.path.exists(imagine2):
     st.image(imagine2, caption="📌 Profil companie Vestas Wind Systems A/S", use_container_width=True)
 else:
