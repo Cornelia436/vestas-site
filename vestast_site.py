@@ -7,6 +7,9 @@ from PIL import Image
 from io import BytesIO
 import base64
 
+# === Configurații generale ale paginii ===
+st.set_page_config(layout="centered", page_title="Analiză VESTAS", page_icon="📈")
+
 # === Afișare banner + siglă liceu ===
 def get_sigla_base64(path):
     img = Image.open(path)
@@ -25,9 +28,6 @@ banner_html = f"""
 </div>
 """
 st.markdown(banner_html, unsafe_allow_html=True)
-
-# === Configurații generale ale paginii ===
-st.set_page_config(layout="centered", page_title="Analiză VESTAS", page_icon="📈")
 
 st.title("🌬️ Analiză Investiție: VESTAS WIND SYSTEMS A/S")
 st.subheader("Cod bursier: `VWS.CO`")
