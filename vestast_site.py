@@ -3,36 +3,54 @@ import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+from PIL import Image
+from io import BytesIO
+import base64
 
-# ─────────────────────────────────────────────
-# Realizat de echipa eEconomic - Colegiul Economic „Regele Mihai I” Buzău
-# Autenticitate validată • 2025
-# ─────────────────────────────────────────────
+# === Afișare banner + siglă liceu ===
+def get_sigla_base64(path):
+    img = Image.open(path)
+    img.thumbnail((100, 100))
+    buffer = BytesIO()
+    img.save(buffer, format="PNG")
+    return base64.b64encode(buffer.getvalue()).decode()
 
+sigla_path = "cropped-sigla-finala-2023-2-removebg-preview.png"
+sigla_base64 = get_sigla_base64(sigla_path)
+
+banner_html = f"""
+<div style='display: flex; align-items: center; justify-content: center; background-color: #dbeafe; padding: 10px; border-radius: 10px; margin-bottom: 20px;'>
+    <img src="data:image/png;base64,{sigla_base64}" style='height: 60px; margin-right: 15px;' />
+    <div style='font-weight: bold; font-size: 18px; color: #1e40af;'>📘 Proiect realizat de echipa <u>eEconomic</u></div>
+</div>
+"""
+st.markdown(banner_html, unsafe_allow_html=True)
+
+# === Configurații generale ale paginii ===
 st.set_page_config(layout="centered", page_title="Analiză VESTAS", page_icon="📈")
 
 st.title("🌬️ Analiză Investiție: VESTAS WIND SYSTEMS A/S")
 st.subheader("Cod bursier: `VWS.CO`")
 
-# Obține datele despre acțiune de la Yahoo Finance
+# === Obține datele despre acțiune de la Yahoo Finance ===
 actiune = yf.Ticker("VWS.CO")
 info = actiune.info
 pret = info.get("currentPrice", "N/A")
 recomandare = info.get("recommendationKey", "N/A")
 
-# Afișare preț & recomandare
+# === Afișare preț & recomandare ===
 col1, col2 = st.columns(2)
 col1.metric("💰 Preț curent (DKK)", pret)
 col2.metric("📌 Recomandare investitori", str(recomandare).upper())
 
-# Imagine performanță acțiuni
+# === Imagine performanță acțiuni ===
 imagine1 = "Imagine1.png"
 if os.path.exists(imagine1):
     st.image(imagine1, caption="📊 Performanță acțiuni VESTAS", use_container_width=True)
 else:
     st.warning(f"⚠️ Imagine lipsă: {imagine1}")
 
-# Argumente pentru investiție
+# === Argumente pentru investiție ===
 with st.expander("🧩 Argumente strategice pentru investiție"):
     st.markdown("""
 ### ✅ Avantaje competitive VESTAS:
@@ -46,6 +64,7 @@ with st.expander("🧩 Argumente strategice pentru investiție"):
 - 🌍 Aliniere perfectă la politicile climatice europene  
 """)
 
+# === Informații suplimentare în extensii ===
 with st.expander("📌 Despre Vestas"):
     st.markdown("""
 **Vestas Wind Systems A/S** este liderul global în soluții de energie eoliană, cu sediul în Aarhus, Danemarca.  
@@ -112,14 +131,14 @@ with st.expander("📬 Contact"):
 - 🔗 [vestas.com](https://www.vestas.com)  
 """)
 
-# Imagine suplimentară profil companie
+# === Imagine suplimentară profil companie ===
 imagine2 = "Imagine2.png"
 if os.path.exists(imagine2):
     st.image(imagine2, caption="📌 Profil companie Vestas Wind Systems A/S", use_container_width=True)
 else:
     st.warning(f"⚠️ Imagine lipsă: {imagine2}")
 
-# Date fundamentale
+# === Date fundamentale companie ===
 with st.expander("📊 Date fundamentale companie"):
     st.markdown("""
 - 🏢 **Sediu:** Aarhus, Danemarca  
@@ -132,7 +151,7 @@ with st.expander("📊 Date fundamentale companie"):
 - 📦 **Sector:** Industrial Goods  
 """)
 
-# Evoluție acțiune
+# === Evoluție acțiune (10 zile) ===
 st.divider()
 st.header("📈 Evoluție recentă a acțiunii VESTAS")
 
@@ -154,18 +173,5 @@ if not data.empty:
 else:
     st.info("📭 Datele nu sunt disponibile momentan.")
 
-# Footer autenticitate + sigla
-st.divider()
-col_logo, col_text = st.columns([1, 3])
-with col_logo:
-    if os.path.exists("sigla_liceu.png"):
-        st.image("sigla_liceu.png", width=120)
-with col_text:
-    st.markdown("""
-**Proiect realizat de echipa _eEconomic_**  
-Colegiul Economic „Regele Mihai I” Buzău  
-🛡️ _Autenticitate verificată | Mai 2025_
-""")
-
-# Avertisment
+# === Avertisment final ===
 st.warning("⚠️ Investițiile pe piața bursieră implică riscuri. Informați-vă corect!")
