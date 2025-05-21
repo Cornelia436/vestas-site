@@ -110,7 +110,7 @@ with st.expander("📬 Contact"):
 """)
 
 # Imagine suplimentară profil companie
-imagine2 = "ImagineProfil.png"  # Schimbat cu fișierul tău
+imagine2 = "Imagine2.png"  # Schimbat cu fișierul tău
 if os.path.exists(imagine2):
     st.image(imagine2, caption="📌 Profil companie Vestas Wind Systems A/S", use_container_width=True)
 else:
