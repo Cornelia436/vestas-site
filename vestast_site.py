@@ -21,7 +21,7 @@ col1, col2 = st.columns(2)
 col1.metric("💰 Preț curent (DKK)", pret)
 col2.metric("📌 Recomandare investitori", str(recomandare).upper())
 
-# Afișare imagine performanță acțiuni
+# Imagine performanță acțiuni
 imagine1 = "Imagine1.png"
 if os.path.exists(imagine1):
     st.image(imagine1, caption="📊 Performanță acțiuni VESTAS", use_container_width=True)
@@ -42,14 +42,81 @@ with st.expander("🧩 Argumente strategice pentru investiție"):
 - 🌍 Aliniere perfectă la politicile climatice europene  
 """)
 
-# Afișare imagine profil companie
-imagine2 = "Imagine2.png"
+# Informații suplimentare în extensii
+with st.expander("📌 Despre Vestas"):
+    st.markdown("""
+**Vestas Wind Systems A/S** este liderul global în soluții de energie eoliană, cu sediul în Aarhus, Danemarca.  
+- 📅 **Fondare:** 1945 (de Peder Hansen)  
+- 👤 **CEO:** Henrik Andersen  
+- 🧑‍💼 **Președinte:** Bert Nordberg  
+- 👥 **Angajați:** aproximativ 35.100 (2024)  
+- 🌍 **Țări cu turbine instalate:** 88  
+- ⚡ **Capacitate totală instalată:** peste 189 GW  
+- 🔗 [Website oficial](https://www.vestas.com)  
+""")
+
+with st.expander("🛠️ Produse și Servicii"):
+    st.markdown("""
+- 🌪️ **Turbine eoliene onshore și offshore** – eficiente și fiabile  
+- 🧰 **Servicii de întreținere** – optimizarea performanței turbinelor  
+- 📊 **Consultanță bazată pe date** – maximizarea producției de energie  
+- 🤝 **Proiecte de dezvoltare** – parteneriate pentru parcuri eoliene mari  
+""")
+
+with st.expander("💼 Performanță Financiară"):
+    st.markdown("""
+- 💰 **Venituri (2024):** 17,3 miliarde EUR  
+- 📈 **Profit operațional Q4 2024:** 759 milioane EUR  
+- 📊 **Marjă EBIT estimată 2025:** 4–7%  
+- 📦 **Backlog comenzi:** 69,8 miliarde EUR  
+- 📉 **Simbol bursier:** `VWS` la Bursa din Copenhaga  
+""")
+
+with st.expander("🌱 Angajament pentru Sustenabilitate"):
+    st.markdown("""
+- ♻️ **Reciclare pale turbine:** parteneriat cu Stena Recycling  
+- 🏗️ **Reducerea emisiilor:** utilizare oțel cu emisii reduse  
+- 🏅 **Clasare globală:** locul 3 în topul Corporate Knights Global 100  
+""")
+
+with st.expander("🌍 Prezență Globală"):
+    st.markdown("""
+**Facilități în:**  
+- 🇪🇺 Europa: Danemarca, Germania, Italia, România, Spania, Suedia, Norvegia, UK  
+- 🌏 Asia: China, India, Taiwan  
+- 🌎 America: SUA, Brazilia  
+- 🇦🇺 Australia  
+
+**Proiecte recente:**  
+- 🌊 **Nordlicht 1 (Germania):** 68 turbine V236-15.0 MW  
+- 🌪️ **Fengmiao I (Taiwan):** 495 MW  
+- 🌬️ **Profen II (Germania):** 62 MW  
+""")
+
+with st.expander("🔎 Noutăți și Perspective"):
+    st.markdown("""
+Vestas rămâne un lider în ciuda provocărilor:  
+- 📈 **Creștere costuri și întârzieri**  
+- 🛠️ **Necesitate accelerare autorizări și investiții în rețele**  
+- 🌐 **Sprijin esențial pentru obiectivele climatice globale**  
+""")
+
+with st.expander("📬 Contact"):
+    st.markdown("""
+- 📍 **Adresă:** Hedeager 42, 8200 Aarhus N, Danemarca  
+- ☎️ **Telefon:** +45 97 30 00 00  
+- 📧 **Email:** vestas-centraleurope@vestas.com  
+- 🔗 [vestas.com](https://www.vestas.com)  
+""")
+
+# Imagine suplimentară profil companie
+imagine2 = "ImagineProfil.png"  # Schimbat cu fișierul tău
 if os.path.exists(imagine2):
     st.image(imagine2, caption="📌 Profil companie Vestas Wind Systems A/S", use_container_width=True)
 else:
     st.warning(f"⚠️ Imagine lipsă: {imagine2}")
 
-# Date fundamentale
+# Date fundamentale (poți păstra sau șterge dacă sunt redundante)
 with st.expander("📊 Date fundamentale companie"):
     st.markdown("""
 - 🏢 **Sediu:** Aarhus, Danemarca  
@@ -62,7 +129,7 @@ with st.expander("📊 Date fundamentale companie"):
 - 📦 **Sector:** Industrial Goods  
 """)
 
-# Grafic evoluție recentă
+# Evoluție acțiune (10 zile)
 st.divider()
 st.header("📈 Evoluție recentă a acțiunii VESTAS")
 
