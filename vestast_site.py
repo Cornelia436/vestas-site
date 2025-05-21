@@ -8,15 +8,15 @@ from io import BytesIO
 import base64
 
 # === Afișare banner + siglă liceu ===
-def get_sigla_base64(path):
-    img = Image.open(path)
+def get_sigla_liceu.png(path):
+    img = sigla_liceu.png(path)
     img.thumbnail((100, 100))
     buffer = BytesIO()
     img.save(buffer, format="PNG")
     return base64.b64encode(buffer.getvalue()).decode()
 
-sigla_path = "cropped-sigla-finala-2023-2-removebg-preview.png"
-sigla_base64 = get_sigla_base64(sigla_path)
+sigla_path = "sigla_liceu.png"
+sigla_base64 = sigla_liceu.png(sigla_path)
 
 banner_html = f"""
 <div style='display: flex; align-items: center; justify-content: center; background-color: #dbeafe; padding: 10px; border-radius: 10px; margin-bottom: 20px;'>
